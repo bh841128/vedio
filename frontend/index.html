@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Vedio · AI 视频生成</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand"><span class="logo">▶</span> Vedio</div>
+      <div class="sub">用一句话，生成一段视频</div>
+    </header>
+
+    <main>
+      <section class="card create-card">
+        <label class="label" for="prompt">描述你想要的视频</label>
+        <textarea id="prompt" rows="4" placeholder="例如：一只猫在火星上漫步，电影质感，夕阳背光"></textarea>
+        <div class="options">
+          <label class="chk"><input type="checkbox" id="enhance" checked /> 智能增强提示词</label>
+          <select id="resolution" title="分辨率">
+            <option value="720p">720p</option>
+            <option value="1080p">1080p</option>
+          </select>
+          <select id="duration" title="时长">
+            <option value="5">5 秒</option>
+            <option value="10">10 秒</option>
+          </select>
+        </div>
+        <button id="generateBtn" class="primary">生成视频</button>
+        <div id="statusBox" class="status hidden">
+          <div class="status-line"><span id="statusText">排队中…</span><span id="statusPct">0%</span></div>
+          <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
+        </div>
+        <div id="errorBox" class="error hidden"></div>
+      </section>
+
+      <section id="resultCard" class="card result-card hidden">
+        <div class="section-title">生成结果</div>
+        <video id="resultVideo" controls playsinline></video>
+        <div class="result-actions">
+          <a id="downloadBtn" class="btn" download="video.mp4" href="#">下载视频</a>
+          <button id="regenBtn" class="btn ghost">再生成一个</button>
+        </div>
+      </section>
+
+      <section class="card history-card">
+        <div class="section-title">历史记录 <span id="historyCount" class="count">0</span></div>
+        <div id="historyList" class="history-list">
+          <div class="empty">还没有记录，先生成一个吧</div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
