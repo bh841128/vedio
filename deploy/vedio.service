@@ -1,0 +1,17 @@
+[Unit]
+Description=Vedio video generation backend
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/opt/vedio
+Environment=PYTHONUNBUFFERED=1
+Environment=MOCK_MODE=0
+EnvironmentFile=-/opt/vedio/.env
+ExecStart=/usr/bin/python3 -m backend
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
